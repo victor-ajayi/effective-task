@@ -15,7 +15,7 @@ class Book:
         year: int,
         status: BookStatus = BookStatus.AVAILABLE,
     ) -> None:
-        self.id = uuid4()
+        self.id = str(uuid4())
         self.title = title
         self.author = author
         self.year = year
@@ -26,7 +26,7 @@ class Book:
 
     def to_dict(self):
         return {
-            "id": str(self.id),
+            "id": self.id,
             "title": self.title,
             "author": self.author,
             "year": self.year,
@@ -34,4 +34,4 @@ class Book:
         }
 
     def __str__(self) -> str:
-        return f"Книга {str(self.id)[:8]}: {self.author}, {self.title}, {self.year}"
+        return f"Книга {self.id[:8]}: {self.author}, {self.title}, {self.year}"

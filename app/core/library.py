@@ -28,7 +28,7 @@ class Library:
             self.filepath.touch()
 
     def add(self, book: Book):
-        self.books.update({str(book.id): book.to_dict()})
+        self.books.update({book.id: book.to_dict()})
         self.count += 1
 
     def delete(self, id: str):
@@ -39,19 +39,19 @@ class Library:
         self.books.clear()
         self.count = 0
 
-    def get_book_by_id(self, id: str) -> Book | None:
+    def get_book_by_id(self, id: str) -> dict | None:
         return self.books.get(id)
 
-    def get_book_by_title(self, title: str) -> Book:
+    def get_books_by_title(self, title: str) -> list[dict]:
         return [book for book in self.books.values() if title in book["title"]]
 
-    def get_book_by_author(self, author: str) -> Book:
+    def get_books_by_author(self, author: str) -> list[dict]:
         return [book for book in self.books.values() if author in book["author"]]
 
-    def get_book_by_year(self, year: int) -> Book:
+    def get_books_by_year(self, year: int) -> list[dict]:
         return [book for book in self.books.values() if book["year"] == year]
 
-    def get_books(self, last: int | None = None):
+    def get_books(self, last: int | None = None) -> list[dict]:
         books = list(self.books.values())
         if last:
             return books[-last:]
