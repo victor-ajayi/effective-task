@@ -1,7 +1,9 @@
-from app.core.library import library
+from argparse import ArgumentParser
+
+from app.core.library import Library
 
 
-def find_book(args: dict):
+def find_book(args: dict, library: Library):
     if args["title"]:
         books = library.get_book_by_title(args["title"])
         print(books)
@@ -16,7 +18,7 @@ def find_book(args: dict):
 
 
 def create_command(subparsers):
-    parser = subparsers.add_parser(
+    parser: ArgumentParser = subparsers.add_parser(
         "find", help="Найти книгу по названию или другим параметрам"
     )
     parameter = parser.add_mutually_exclusive_group(required=True)

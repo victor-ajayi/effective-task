@@ -1,7 +1,9 @@
-from app.core.library import library
+from argparse import ArgumentParser
+
+from app.core.library import Library
 
 
-def clear_library(args: dict):
+def clear_library(args: dict, library: Library):
     confirm_delete = input("Вы уверены, что хотите удалить весь каталог? y/n ")
     if confirm_delete in ["y", "Y", "YES", "yes"]:
         library.clear()
@@ -13,5 +15,7 @@ def clear_library(args: dict):
 
 
 def create_command(subparsers):
-    parser = subparsers.add_parser("clear", help="Удалить все книги в каталоге")
+    parser: ArgumentParser = subparsers.add_parser(
+        "clear", help="Удалить все книги в каталоге"
+    )
     parser.set_defaults(func=clear_library)

@@ -1,10 +1,11 @@
 import sys
+from argparse import ArgumentParser
 
 from app.core.book import BookStatus
-from app.core.library import library
+from app.core.library import Library
 
 
-def change_status(args: dict):
+def change_status(args: dict, library: Library):
     book = library.get_book_by_id(args["id"])
     if not book:
         sys.stderr.write("Ошибка: Не существует книга с этим ID")
@@ -16,7 +17,7 @@ def change_status(args: dict):
 
 
 def create_command(subparsers):
-    parser = subparsers.add_parser(
+    parser: ArgumentParser = subparsers.add_parser(
         "status", help="Изменить статус книги ('В наличии', 'Выдана')"
     )
     parser.add_argument("status", type=str, help="Новый статус книги")

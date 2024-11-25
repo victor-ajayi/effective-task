@@ -7,6 +7,9 @@ CLI-приложение для работы с каталогом библио�
 from argparse import ArgumentParser, Namespace
 
 from app.commands import add, clear, delete, find, list, status
+from app.core.library import Library
+
+library = Library()
 
 
 def main():
@@ -28,7 +31,7 @@ def main():
     args: Namespace = parser.parse_args()
 
     if args.command:
-        args.func(args.__dict__)
+        args.func(args.__dict__, library)
     else:
         parser.print_help()
 

@@ -1,9 +1,10 @@
 import json
+from argparse import ArgumentParser
 
-from app.core.library import library
+from app.core.library import Library
 
 
-def list_books(args: dict):
+def list_books(args: dict, library: Library):
     books = library.get_books(args["last"])
     if books:
         print(json.dumps(books, ensure_ascii=False, indent=4))
@@ -14,7 +15,9 @@ def list_books(args: dict):
 
 
 def create_command(subparsers):
-    parser = subparsers.add_parser("list", help="Отобразить список книг в каталоге")
+    parser: ArgumentParser = subparsers.add_parser(
+        "list", help="Отобразить список книг в каталоге"
+    )
     parser.add_argument(
         "--last", type=int, help="Количество книг для печати, начиная с конца списка"
     )
