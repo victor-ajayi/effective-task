@@ -5,13 +5,13 @@ from app.core.library import Library
 
 def find_book(args: dict, library: Library):
     if args["title"]:
-        books = library.get_book_by_title(args["title"])
+        books = library.get_books_by_title(args["title"])
         print(books)
     elif args["author"]:
-        books = library.get_book_by_author(args["author"])
+        books = library.get_books_by_author(args["author"])
         print(books)
     elif args["year"]:
-        books = library.get_book_by_year(args["year"])
+        books = library.get_books_by_year(args["year"])
         print(books)
 
     library.save()
