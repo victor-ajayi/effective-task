@@ -10,10 +10,9 @@ def delete_book(args: dict, library: Library):
     )
     if confirm_delete in ["y", "Y", "YES", "yes"]:
         try:
-            print(args["id"])
             library.delete(args["id"])
         except KeyError:
-            sys.stderr.write("Ошибка: Не существует книга с этим ID\n")
+            sys.stderr.write(f"Ошибка: Не существует книга с ID {args['id']}\n")
             sys.exit(1)
         print(f"Книга {args['id']} удалена")
     else:
