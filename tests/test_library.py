@@ -10,6 +10,9 @@ class TestLibrary(unittest.TestCase):
         self.library.clear()
         self.book = Book("Test book", "Test author", 2000)
 
+    def tearDown(self) -> None:
+        self.library.clear()
+
     def test_add(self):
         self.library.add(self.book)
         self.assertEqual(self.library.count, 1)
