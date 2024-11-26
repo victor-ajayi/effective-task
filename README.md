@@ -62,7 +62,7 @@ python -m app.cli find --author "Charles"
 * Найти книгу по названию
 
 ```bash
-python -m app.cli find --title "Moby Dick"
+python -m app.cli find --title "A Tale of Two Cities"
 ```
 
 P.S. Та же история, вы можете находить книги, передавая подстроки.
@@ -79,7 +79,7 @@ python -m app.cli find --year 1943
 python -m app.cli list
 ```
 
-Команда также принимает флаг `last`, чтобы вывести последные `n` книг в каталоге.
+Команда принимает флаг `last`, чтобы вывести последные `n` книг в каталоге.
 
 ```bash
 python -m app.cli list --last 3
